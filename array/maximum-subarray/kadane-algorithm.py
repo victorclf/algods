@@ -25,7 +25,7 @@ This version does not accept the empty subarray as valid.
 
 Running time: O(n)
 '''
-def maximumSubarray(array):
+def findMaximumSubarray(array):
 	bestSum = None
 	bestStart = None
 	bestEnd = None
@@ -51,33 +51,33 @@ def maximumSubarray(array):
 	
 	
 if __name__ == '__main__':
-	r1 = maximumSubarray([20, -25, 5, 5, 19])
+	r1 = findMaximumSubarray([20, -25, 5, 5, 19])
 	assert r1.sum == 29
 	assert r1.start == 2
 	assert r1.end == 5
 	
-	r2 = maximumSubarray([13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7])
+	r2 = findMaximumSubarray([13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7])
 	assert r2.sum == 43
 	assert r2.start == 7
 	assert r2.end == 11
 	
-	r3 = maximumSubarray([])
+	r3 = findMaximumSubarray([])
 	assert r3.sum is None
 	assert r3.start is None
 	assert r3.end is None
 	
-	r4 = maximumSubarray([-1, -4, -5])
+	r4 = findMaximumSubarray([-1, -4, -5])
 	assert r4.sum == -1
 	assert r4.start == 0
 	assert r4.end == 1
 	
-	r5 = maximumSubarray([4, 3, 3])
+	r5 = findMaximumSubarray([4, 3, 3])
 	assert r5.sum == 10
 	assert r5.start == 0
 	assert r5.end == 3
 	
 	# Prefer largest subarray even though sum is the same, i.e. [5, -5, 10] instead of [10] here
-	r6 = maximumSubarray([5, -5, 10])
+	r6 = findMaximumSubarray([5, -5, 10])
 	assert r6.sum == 10
 	assert r6.start == 0
 	assert r6.end == 3
