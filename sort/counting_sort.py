@@ -1,7 +1,7 @@
 import random
 
 
-def counting_sort_0tok(l, k, key=lambda x: x):
+def countingSort0tok(l, k, key=lambda x: x):
     """
     Sorts l in O(nk) time using the counting sort algorithm. keys in l must be in the interval [0, k].
 
@@ -29,7 +29,7 @@ def counting_sort_0tok(l, k, key=lambda x: x):
     return r
 
 
-def counting_sort(l, maxKey, minKey=0, key=lambda x: x):
+def countingSort(l, maxKey, minKey=0, key=lambda x: x):
     """
     Sorts l in O(nk) time using the counting sort algorithm. keys in l must be in the interval [minKey, maxKey].
 
@@ -42,7 +42,7 @@ def counting_sort(l, maxKey, minKey=0, key=lambda x: x):
 
     _key = key if minKey == 0 else (lambda x: key(x) - minKey)
     maxKey = maxKey - minKey
-    return counting_sort_0tok(l, maxKey, _key)
+    return countingSort0tok(l, maxKey, _key)
 
 
 if __name__ == '__main__':
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     expected = base.copy()
     expected.sort()
 
-    l = counting_sort(base, maxKey, minKey=minKey)
+    l = countingSort(base, maxKey, minKey=minKey)
 
     print(l)
     print(expected)
