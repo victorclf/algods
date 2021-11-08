@@ -17,6 +17,7 @@ Op | Worst  | Average | Space (aux) | Notes
 -- | ------ | ------- | ----------- | -----
 Counting Sort | O(n + k) | . | O(n + k) | not inplace, good when k << n
 Radix Sort | O(d * (n + k) ) | . | O(n + k) | d = digits, k = base
+Bucket Sort | O(n^2) | O(n) | O(n) | good for values following uniform distribution [0, 1)
 
 # Data Structures
 
