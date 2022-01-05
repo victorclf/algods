@@ -32,3 +32,13 @@ insert | O(lg n)
 find-min | O(1)
 extract-min | O(lg n)
 decrease-key | O(lg n)
+
+## List
+
+### Doubly Linked List
+
+Op | Worst
+-- | -------------
+insert | O(1)
+search | O(n)
+delete | O(n)
