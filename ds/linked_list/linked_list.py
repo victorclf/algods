@@ -1,6 +1,6 @@
 class Node:
-    def __init__(self, key=None):
-        self.key = key
+    def __init__(self, element=None):
+        self.element = element
         self.next = None
         self.prev = None
 
@@ -12,10 +12,8 @@ class LinkedList:
         self.nil.prev = self.nil
 
     def __iter__(self):
-        currentNode = self.head
-        while currentNode is not self.nil:
-            yield currentNode.key
-            currentNode = currentNode.next
+        for x in self.nodes():
+            yield x.element
 
     @property
     def head(self):
@@ -33,8 +31,14 @@ class LinkedList:
     def tail(self, newTail):
         self.nil.prev = newTail
 
-    def insertHead(self, key):
-        self.insertHeadNode(Node(key))
+    def nodes(self):
+        currentNode = self.head
+        while currentNode is not self.nil:
+            yield currentNode
+            currentNode = currentNode.next
+
+    def insertHead(self, element):
+        self.insertHeadNode(Node(element))
 
     def insertHeadNode(self, node):
         self.head.prev = node
@@ -42,15 +46,15 @@ class LinkedList:
         node.prev = self.nil
         self.head = node
 
-    def search(self, key):
+    def search(self, element):
         currentNode = self.head
-        self.nil.key = key
-        while currentNode.key != key:
+        self.nil.element = element
+        while currentNode.element != element:
             currentNode = currentNode.next
         return currentNode if currentNode is not self.nil else None
 
-    def delete(self, key):
-        node = self.search(key)
+    def delete(self, element):
+        node = self.search(element)
         if node is None:
             raise KeyError()
         self.deleteNode(node)

@@ -8,17 +8,17 @@ class TestLinkedList(unittest.TestCase):
         self.l1 = LinkedList()
         for e in reversed(self.elems1):
             self.l1.insertHead(e)
-        self.nonexistentKey = 12345678
+        self.nonexistentElem = 12345678
 
     def test_insert(self):
         for i, e in enumerate(self.l1):
             self.assertEqual(e, self.elems1[i])
 
     def test_search(self):
-        key = self.elems1[3]
-        self.assertEqual(self.l1.search(key).key, key)
+        elem = self.elems1[3]
+        self.assertEqual(self.l1.search(elem).element, elem)
 
-        self.assertIsNone(self.l1.search(self.nonexistentKey))
+        self.assertIsNone(self.l1.search(self.nonexistentElem))
 
     def test_delete(self):
         self.l1.delete(self.elems1[0])
@@ -31,7 +31,7 @@ class TestLinkedList(unittest.TestCase):
             self.assertEqual(e, self.elems1[i])
 
         with self.assertRaises(KeyError):
-            self.l1.delete(self.nonexistentKey)
+            self.l1.delete(self.nonexistentElem)
 
 
 if __name__ == '__main__':
