@@ -21,6 +21,15 @@ Bucket Sort | O(n^2) | O(n) | O(n) | good for values following uniform distribut
 
 # Data Structures
 
+## Hash
+
+### Chaining Hash Table
+Op | Worst  | Average | Notes
+-- | ------ | ------- | -----
+insert | O(1) | O(1) | .
+search | O(n) | O(1) | .
+delete | O(n) | O(1) | assuming input is the key
+
 ## Heap
 
 ### Binary min-heap/max-heap
