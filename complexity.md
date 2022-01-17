@@ -62,3 +62,11 @@ Op | Worst  | Average | Space (aux) | Notes
 Preorder Traversal | O(n) | . | O(n) for stack | nodes w/o parent pointer; algo does not modify tree; iterative
 Inorder Traversal | O(n) | . | O(n) for stack | nodes w/o parent pointer; algo does not modify tree; iterative
 Postorder Traversal | O(n) | . | O(n) for stack | nodes w/o parent pointer; algo does not modify tree; iterative
+
+### Binary Search Tree (Unbalanced)
+
+Op | Worst  | Average | Space (aux) | Notes
+-- | ------ | ------- | ----------- | -----
+insert | O(n) | O(log n) | O(1) | complexity depends on insertion order 
+search | O(n) | O(log n) | O(1) | complexity depends on insertion order
+delete | O(n) | O(log n) | O(1) | complexity depends on insertion order
