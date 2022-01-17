@@ -28,7 +28,7 @@ Op | Worst  | Average | Notes
 -- | ------ | ------- | -----
 insert | O(1) | O(1) | .
 search | O(n) | O(1) | .
-delete | O(n) | O(1) | assuming input is the key
+delete(key) | O(n) | O(1) | .
 
 ## Heap
 
@@ -50,7 +50,8 @@ Op | Worst
 -- | -------------
 insert | O(1)
 search | O(n)
-delete | O(n)
+delete(node) | O(1)
+delete(element) | O(n)
 
 ## Tree
 
