@@ -63,7 +63,7 @@ class BinarySearchTree:
             else:
                 node = stack.pop()
                 yield node
-                node = node.right if node.right else None
+                node = node.right
 
     def items(self):
         for node in self._nodes():
@@ -155,6 +155,7 @@ class BinarySearchTree:
     def _transplant(self, dstNode, srcNode):
         if not dstNode.parent:
             self.root = srcNode
+            srcNode.parent = None
         elif dstNode.isLeftChild():
             dstNode.parent.linkLeftChild(srcNode)
         else:

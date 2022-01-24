@@ -33,9 +33,13 @@ class TestBinarySearchTree(unittest.TestCase):
         for k, v in zip(self.keys1, self.values1):
             self.assertEqual(self.bst1.get(k), v)
 
-        k = self.keys1.pop(i)
-        v = self.values1.pop(i)
+        k = self.keys1.pop(0)
+        v = self.values1.pop(0)
         self.assertEqual(self.bst1.pop(k), v)
+
+    def test_pop_root(self):
+        self.bst1.pop(self.bst1.root.key)
+        self.assertIsNone(self.bst1.root.parent)
 
     def test_random(self):
         import random
