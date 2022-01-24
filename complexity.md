@@ -70,3 +70,11 @@ Op | Worst  | Average | Space (aux) | Notes
 insert | O(n) | O(log n) | O(1) | complexity depends on insertion order 
 search | O(n) | O(log n) | O(1) | complexity depends on insertion order
 delete | O(n) | O(log n) | O(1) | complexity depends on insertion order
+
+### Red-Black Tree
+
+Op | Worst  | Space (aux) | Notes
+-- | ------ | ----------- | -----
+insert | O(log n) | O(1) | .
+search | O(log n) | O(1) | .
+delete | O(log n) | O(1) | .
