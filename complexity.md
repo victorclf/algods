@@ -78,3 +78,15 @@ Op | Worst  | Space (aux) | Notes
 insert | O(log n) | O(1) | .
 search | O(log n) | O(1) | .
 delete | O(log n) | O(1) | .
+
+### Order Statistic Red-Black Tree (supporting multiple values per key)
+
+Op | Worst  | Space (aux) | Notes
+-- | ------ | ----------- | -----
+insert | O(log n) | O(1) | properties with O(1) complexity which only propagate changes upwards to the root dont affect the complexity from O(log n) in RB trees
+search | O(log n) | O(1) | return the first value associated with keys
+searchAll | O(log n) | O(1) | return list with all values for that key
+delete | O(log n) | O(1) | .
+rank | O(log n) | O(1) | minimum rank considering there can be multiple values (key happens multiple times)
+rankRange | O(log n) | O(1) | minimum rank and maximum rank of the key given it can have multiple values
+select | O(log n) | O(1) | .
