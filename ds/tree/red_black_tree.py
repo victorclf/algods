@@ -1,7 +1,8 @@
 import enum
 
-# TODO Reuse code from binary_search_tree
+# FIXME Either disallow duplicate keys by overwriting the same node or store a list of values in the same node.
 
+# TODO Reuse code from binary_search_tree.
 
 class Color(enum.Enum):
     RED = enum.auto()

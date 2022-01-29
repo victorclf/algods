@@ -7,6 +7,8 @@ of x, then y.key <= x.key. If y is a node in the right subtree of x, then
 y.key >= x.key."
 """
 
+# FIXME Either disallow duplicate keys by overwriting the same node or store a list of values in the same node.
+
 
 class Node:
     def __init__(self, key, value):
