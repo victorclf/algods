@@ -1,5 +1,11 @@
 # Algorithms
 
+## Array
+Op | Worst  | Average | Space (aux) | Notes
+-- | ------ | ------- | ----------- | -----
+Count inversions | O(n logn) | . | O(n) | .
+
+
 ## Sorting
 
 ### Comparison Sorting ( Ω(n logn) )
