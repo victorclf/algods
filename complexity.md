@@ -3,7 +3,8 @@
 ## Array
 Op | Worst  | Average | Space (aux) | Notes
 -- | ------ | ------- | ----------- | -----
-Count inversions | O(n logn) | . | O(n) | .
+Count Inversions | O(n logn) | . | O(n) | .
+Longest Common Subsequence | O(m * n) | . | O(m * n) | if just the size of the subseq, then space is O(min(m, n))
 
 
 ## Sorting
