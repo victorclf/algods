@@ -5,7 +5,8 @@ Op | Worst  | Average | Space (aux) | Notes
 -- | ------ | ------- | ----------- | -----
 Count Inversions | O(n logn) | . | O(n) | .
 Longest Common Subsequence | O(m * n) | . | O(m * n) | if just the size of the subseq, then space is O(min(m, n))
-
+Longest Increasing Subsequence | O(n logn) | . | O(n) | .
+Next Permutation | O(n) | . | . | .
 
 ## Sorting
 
