@@ -1,4 +1,4 @@
-from xor.find_missing_number import findMissingNumber
+from bitwise.xor.find_missing_number import findMissingNumber
 
 
 def findDuplicateNumber(sequence, startNumber, endNumber):
