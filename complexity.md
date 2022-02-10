@@ -8,6 +8,12 @@ Longest Common Subsequence | O(m * n) | . | O(m * n) | if just the size of the s
 Longest Increasing Subsequence | O(n logn) | . | O(n) | .
 Next Permutation | O(n) | . | . | .
 
+## Optimization
+Op | Worst  | Average | Space (aux) | Notes
+-- | ------ | ------- | ----------- | -----
+Activity Selection Problem (unweighted) | O(n) | . | O(n) | .
+
+
 ## Sorting
 
 ### Comparison Sorting ( Ω(n logn) )
