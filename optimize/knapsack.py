@@ -10,7 +10,6 @@ def solveBinaryKnapsack(items, maxWeight):
     :returns: tuple with maximum value and list with the subset of items with that value
     """
     valueTable = [[0 for _ in range(maxWeight + 1)] for _ in range(len(items) + 1)]
-    choiceTable = [[None for _ in range(maxWeight + 1)] for _ in range(len(items) + 1)]
     for i in range(1, len(items) + 1):
         item = items[i - 1]
         for j in range(1, maxWeight + 1):
@@ -18,22 +17,21 @@ def solveBinaryKnapsack(items, maxWeight):
             valueWithThisItem = item.value + valueTable[i - 1][j - item.weight] if j >= item.weight else 0
             if valueWithThisItem >= valueWithoutThisItem:
                 valueTable[i][j] = valueWithThisItem
-                choiceTable[i][j] = i
             else:
                 valueTable[i][j] = valueWithoutThisItem
-                choiceTable[i][j] = choiceTable[i - 1][j]
 
     chosenItems = []
     i = len(items)
     j = maxWeight
-    while i:
+    while i > 0:
         item = items[i - 1]
-        if i == choiceTable[i][j]:
+        if valueTable[i][j] > valueTable[i - 1][j]:
             chosenItems.insert(0, item)
             i -= 1
             j -= item.weight
         else:
-            i = choiceTable[i][j]
+            i -= 1
+
     return valueTable[-1][-1], chosenItems
 
 
