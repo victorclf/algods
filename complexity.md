@@ -11,7 +11,9 @@ Next Permutation | O(n) | . | . | .
 ## Optimization
 Op | Worst  | Average | Space (aux) | Notes
 -- | ------ | ------- | ----------- | -----
+0-1 (Binary) Knapsack | O(nW) | . | O(nW) | .
 Activity Selection Problem (unweighted) | O(n) | . | O(n) | .
+
 
 
 ## Sorting
