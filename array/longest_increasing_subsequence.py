@@ -12,8 +12,11 @@ class Node:
         return f'{self.element}'
 
 
-def findLongestIncreasingSubsequence(arr):
-    """ Finds a longest monotonically increasing (never decreases) subsequence. """
+def findLongestIncreasingSubsequence(arr, strictly=False):
+    """ Finds a longest monotonically increasing (never decreases) subsequence. 
+    If strictly is True, then find the longest strictly increasing subsequence instead.
+    Uses patience sorting to achieve O(n log n) time.
+    """
     piles = []
     for e in arr:
         if not piles:
@@ -34,7 +37,7 @@ def findLongestIncreasingSubsequence(arr):
         if bestPossiblePile is not None:
             # Found suitable pile for this element.
             prevNode = None
-            if piles[bestPossiblePile][-1].element == e:
+            if not strictly and piles[bestPossiblePile][-1].element == e:
                 prevNode = piles[bestPossiblePile][-1]
             elif bestPossiblePile > 0:
                 prevNode = piles[bestPossiblePile - 1][-1]
