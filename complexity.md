@@ -8,6 +8,13 @@ Longest Common Subsequence | O(m * n) | . | O(m * n) | if just the size of the s
 Longest Increasing Subsequence | O(n logn) | . | O(n) | .
 Next Permutation | O(n) | . | . | .
 
+## Graph
+Op | Worst  | Average | Space (aux) | Notes
+-- | ------ | ------- | ----------- | -----
+Breadth-First Search | O(V + E) | . | O(V) | .
+Count Connected Components | O(V + E) | . | O(V) | uses bfs
+Is Two Colorable? | O(V + E) | . | O(V) | uses bfs
+
 ## Optimization
 Op | Worst  | Average | Space (aux) | Notes
 -- | ------ | ------- | ----------- | -----
