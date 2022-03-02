@@ -1,14 +1,15 @@
 from collections import deque
 
 
-def bfs(graph, srcVertex, discovered=None, onVertexBefore=lambda u: None, onVertexAfter=lambda u: None, onEdge=lambda u, v: None):
+def bfs(graph, srcVertex, isDirectedGraph=False, discovered=None, onVertexBefore=lambda u: None, onVertexAfter=lambda u: None, onEdge=lambda u, v: None):
     """
     Breadth-first search implementation for unweighted graphs. Graph must be a map of each vertex to an iterable
     container of adjacent vertices.
 
     :param graph: graph in adjacency list format
     :param srcVertex: id of the source vertex
-    :param discovered: list of bool indicating which vertices have already been found. Useful for tracking them
+    :param isDirectedGraph: whether the edges in the graph are directed (True) or undirected (False)
+    :param discovered: list of bool indicating which vertices have already been found. Used for tracking the vertices
                         throughout multiple calls to bfs.
     :param onVertexBefore: callback before processing vertex u
     :param onVertexAfter: callback after processing vertex u
@@ -20,6 +21,8 @@ def bfs(graph, srcVertex, discovered=None, onVertexBefore=lambda u: None, onVert
     nVertices = len(graph)
     distance = [float('inf')] * nVertices
     parent = [None] * nVertices
+    # Processed array is necessary to avoid processing the same edge twice in undirected graphs.
+    processed = [False] * nVertices if discovered is None else discovered.copy()
     discovered = [False] * nVertices if discovered is None else discovered
 
     distance[srcVertex] = 0
@@ -29,8 +32,10 @@ def bfs(graph, srcVertex, discovered=None, onVertexBefore=lambda u: None, onVert
     while q:
         u = q.popleft()
         onVertexBefore(u)
+        processed[u] = True
         for v in graph[u]:
-            onEdge(u, v)
+            if isDirectedGraph or not processed[v]:
+                onEdge(u, v)
             if not discovered[v]:
                 discovered[v] = True
                 parent[v] = u
