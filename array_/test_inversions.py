@@ -1,5 +1,5 @@
 import unittest
-from inversions import *
+from .inversions import *
 
 
 def countInversionsBruteForce(arr):
