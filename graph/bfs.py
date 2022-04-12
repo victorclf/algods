@@ -1,130 +1,72 @@
 from collections import deque
 
 
-def bfs(graph, srcVertex, isDirectedGraph=False, discovered=None, onVertexBefore=lambda u: None, onVertexAfter=lambda u: None, onEdge=lambda u, v: None):
-    """
-    Breadth-first search implementation for unweighted graphs. Graph must be a map of each vertex to an iterable
-    container of adjacent vertices.
+class BFS:
+    def __init__(self, graph, isDirectedGraph):
+        """
+        Breadth-first search implementation for unweighted graphs. Graph must be a map of each vertex to an iterable
+        container of adjacent vertices.
 
-    :param graph: graph in adjacency list format
-    :param srcVertex: id of the source vertex
-    :param isDirectedGraph: whether the edges in the graph are directed (True) or undirected (False)
-    :param discovered: list of bool indicating which vertices have already been found. Used for tracking the vertices
-                        throughout multiple calls to bfs.
-    :param onVertexBefore: callback before processing vertex u
-    :param onVertexAfter: callback after processing vertex u
-    :param onEdge: callback when processing edge u, v
-    :return: a tuple with maps: distance, parent, discovered, i.e. number of edges to reach each vertex from srcVertex,
-             the parent of each vertex in a path from srcVertex to vertex, the vertices which have been found traversing
-             from srcVertex
-    """
-    nVertices = len(graph)
-    distance = [float('inf')] * nVertices
-    parent = [None] * nVertices
-    # Processed array is necessary to avoid processing the same edge twice in undirected graphs.
-    processed = [False] * nVertices if discovered is None else discovered.copy()
-    discovered = [False] * nVertices if discovered is None else discovered
+        :param graph: graph in adjacency list format
+        :param isDirectedGraph: whether the edges in the graph are directed (True) or undirected (False)
+        """
+        self.graph = graph
+        self.isDirectedGraph = isDirectedGraph
+        self.nVertices = len(graph)
+        self.reset()
 
-    distance[srcVertex] = 0
-    discovered[srcVertex] = True
-    q = deque([srcVertex])
+    def reset(self):
+        self.distance = [float('inf')] * self.nVertices
+        self.parent = [None] * self.nVertices
+        # Processed array is necessary to avoid processing the same edge twice in undirected graphs.
+        self.processed = [False] * self.nVertices
+        self.discovered = [False] * self.nVertices
 
-    while q:
-        u = q.popleft()
-        onVertexBefore(u)
-        processed[u] = True
-        for v in graph[u]:
-            if isDirectedGraph or not processed[v]:
-                onEdge(u, v)
-            if not discovered[v]:
-                discovered[v] = True
-                parent[v] = u
-                distance[v] = distance[u] + 1
-                q.append(v)
-        onVertexAfter(u)
+    def getPath(self, vertex):
+        path = []
+        while vertex:
+            path.append(vertex)
+            vertex = self.parent[vertex]
+        return path[::-1]
 
-    return distance, parent, discovered
+    def onVertexBefore(self, u):
+        pass
 
+    def onVertexAfter(self, u):
+        pass
 
-def countConnectedComponents(graph):
-    nVertices = len(graph)
-    discovered = None
-    components = 0
-    for vertex in range(len(graph)):
-        if not discovered or not discovered[vertex]:
-            components += 1
-            distance, parent, discovered = bfs(graph, vertex, discovered=discovered)
-    return components
+    def onEdge(self, u, v):
+        pass
 
+    def onBeforeSearchAllPass(self, srcVertex):
+        pass
 
-class _NotTwoColorableException(Exception):
-    pass
+    def searchVertex(self, srcVertex):
+        u = srcVertex
+        self.distance[srcVertex] = 0
+        self.discovered[srcVertex] = True
+        q = deque([srcVertex])
 
+        while q:
+            u = q.popleft()
+            self.onVertexBefore(u)
+            self.processed[u] = True
+            for v in self.graph[u]:
+                if self.isDirectedGraph or not self.processed[v]:
+                    self.onEdge(u, v)
+                if not self.discovered[v]:
+                    self.discovered[v] = True
+                    self.parent[v] = u
+                    self.distance[v] = self.distance[u] + 1
+                    q.append(v)
+            self.onVertexAfter(u)
 
-def isTwoColorable(graph):
-    def onEdge(u, v):
-        if color[u] == color[v]:
-            raise _NotTwoColorableException
-        color[v] = color[u] ^ 1  # assign opposite color
+        return self
 
-    nVertices = len(graph)
-    discovered = None
-    color = [None] * nVertices  # None, 0 or 1
-    for vertex in range(len(graph)):
-        if not discovered or not discovered[vertex]:
-            color[vertex] = 0
-            try:
-                distance, parent, discovered = bfs(graph, vertex, discovered=discovered, onEdge=onEdge)
-            except _NotTwoColorableException:
-                return False
-    return True
-
-
-def _isUndirectedGraph(graph):
-    edges = set()
-    for u in range(len(graph)):
-        for v in graph[u]:
-            edges.add((u, v))
-
-    for u, v in edges:
-        if (v, u) not in edges:
-            return False
-    return True
-
-
-if __name__ == '__main__':
-    undirectedGraph = [[1, 4],  # r = 0
-                       [0, 5],  # s = 1
-                       [3, 5, 6],  # t = 2
-                       [2, 6, 7],  # u = 3
-                       [0],  # v = 4
-                       [1, 2, 6],  # w = 5
-                       [2, 3, 5, 7],  # x = 6
-                       [3, 6]]  # y = 7
-    threeComponentGraph = [[1],
-                            [0],
-                            [3],
-                            [2],
-                            [5],
-                            [4, 6],
-                            [5]]
-    twoColorableGraph = [[3, 4],
-                         [4],
-                         [4],
-                         [0],
-                         [0, 1, 2]]
-
-    assert _isUndirectedGraph(undirectedGraph)
-    assert _isUndirectedGraph(threeComponentGraph)
-    assert _isUndirectedGraph(twoColorableGraph)
-
-    distance, parent, discovered = bfs(undirectedGraph, 1)
-    assert distance == [1, 0, 2, 3, 2, 1, 2, 3]
-    assert parent == [1, None, 5, 2, 0, 1, 5, 6]
-    assert all(discovered)
-
-    assert countConnectedComponents(undirectedGraph) == 1
-    assert countConnectedComponents(threeComponentGraph) == 3
-
-    assert not isTwoColorable(undirectedGraph)
-    assert isTwoColorable(twoColorableGraph)
+    def searchAllVertices(self):
+        nVertices = len(self.graph)
+        for vertex in range(len(self.graph)):
+            if not self.discovered[vertex]:
+                self.onBeforeSearchAllPass(vertex)
+                self.searchVertex(vertex)
+        return self

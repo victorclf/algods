@@ -52,6 +52,9 @@ class DFS:
     def onEdge(self, u, v):
         pass
 
+    def onBeforeSearchAllPass(self, srcVertex):
+        pass
+
     def searchVertex(self, srcVertex):
         u = srcVertex
         self.onVertexBefore(u)
@@ -71,52 +74,7 @@ class DFS:
         self.processed[u] = True
 
     def searchAllVertices(self):
-        nVertices = len(self.graph)
         for vertex in range(len(self.graph)):
             if not self.discovered[vertex]:
+                self.onBeforeSearchAllPass(vertex)
                 self.searchVertex(vertex)
-
-
-class _FoundCycleException(Exception):
-    pass
-
-
-class _FindCycleDFS(DFS):
-    def onEdge(self, u, v):
-        if self.getEdgeType(u, v) == EdgeType.BACK:
-            raise _FoundCycleException(self.getPath(u) + [v])
-
-
-def isCyclicGraph(graph, isDirectedGraph):
-    try:
-        _FindCycleDFS(graph, isDirectedGraph).searchAllVertices()
-    except _FoundCycleException:
-        return True
-    return False
-
-
-if __name__ == '__main__':
-    directedGraph = [[1, 3],  # u = 0
-                     [4],  # v = 1
-                     [4, 5],  # w = 2
-                     [1],  # x = 3
-                     [3],  # y = 4
-                     [5]]  # z = 5
-    dfsDg1 = DFS(directedGraph, isDirectedGraph=True)
-    dfsDg1.searchAllVertices()
-    assert dfsDg1.parent == [None, 0, None, 4, 1, 2]
-    assert all(dfsDg1.discovered)
-    assert all(dfsDg1.processed)
-    assert dfsDg1.entryTime == [1, 2, 9, 4, 3, 10]
-    assert dfsDg1.exitTime == [8, 7, 12, 5, 6, 11]
-
-    acyclicGraph = [[1],
-                    [2],
-                    []]
-    cyclicGraph = [[1],
-                    [2],
-                    [0]]
-    assert not isCyclicGraph(acyclicGraph, isDirectedGraph=False)
-    assert isCyclicGraph(cyclicGraph, isDirectedGraph=False)
-    assert isCyclicGraph(directedGraph, isDirectedGraph=True)
-
