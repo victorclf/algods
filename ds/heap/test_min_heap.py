@@ -1,5 +1,5 @@
 import unittest
-from min_heap import MinHeap
+from .min_heap import MinHeap
 
 
 def satisfiesMinHeapProperty(heap, i):

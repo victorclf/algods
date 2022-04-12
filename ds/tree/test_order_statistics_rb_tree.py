@@ -1,5 +1,5 @@
 import unittest
-from order_statistic_rb_tree import OrderStatisticRBTree, Node, Color
+from .order_statistic_rb_tree import OrderStatisticRBTree, Node, Color
 
 
 class TestOrderStatisticRBTree(unittest.TestCase):

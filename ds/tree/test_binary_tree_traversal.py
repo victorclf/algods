@@ -1,5 +1,5 @@
 import unittest
-from binary_tree_traversal import *
+from .binary_tree_traversal import *
 
 
 class TreeNode:
@@ -21,7 +21,7 @@ class TestBinaryTreeTraversal(unittest.TestCase):
                                             0
                        /                                      \
                     1                                          2
-              /         \                           /                     \
+              /         \                           /      pyth               \
             3             4                       5                        6
           /                 \                       \                     /
         7                     8                      9                  10

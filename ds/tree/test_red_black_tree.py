@@ -1,5 +1,5 @@
 import unittest
-from red_black_tree import RedBlackTree, Node, Color
+from .red_black_tree import RedBlackTree, Node, Color
 
 
 class TestRedBlackTree(unittest.TestCase):

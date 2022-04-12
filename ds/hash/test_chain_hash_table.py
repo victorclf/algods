@@ -1,5 +1,5 @@
 import unittest
-from chain_hash_table import ChainHashTable
+from .chain_hash_table import ChainHashTable
 
 
 class TestChainHashTable(unittest.TestCase):
