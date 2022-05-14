@@ -3,20 +3,19 @@ def buildZArray(s):
         the longest prefix-substring at each index of s.
 
     :param s: a sequence of elements
-    :return list[int]: _description_
+    :return list[int]: Z array with longest prefix-substring at each index of s
     """
-    z = [0 for i in range(len(s))]
+    n = len(s)
+    z = [0 for i in range(n)]
     l = r = 0
-    for i in range(1, len(s)):
-        k = i - l
-        if i <= r and z[k] < r - i + 1:
-            z[i] = z[k]
-        else:
-            l = r = i
-            while r < len(s) and s[r] == s[r - i]:
-                r += 1
-            z[i] = r - l
-            r -= 1  # r - 1 is the last character that satisfies condition
+    for i in range(1, n):
+        if i <= r:
+            z[i] = min(r - i + 1, z[i - l])
+        while i + z[i] < n and s[z[i]] == s[i + z[i]]:
+            z[i] += 1
+        if i + z[i] - 1 > r:
+            l = i
+            r = i + z[i] - 1
     return z
 
 
