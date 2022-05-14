@@ -8,6 +8,11 @@ Longest Common Subsequence | O(m * n) | . | O(m * n) | if just the size of the s
 Longest Increasing Subsequence | O(n logn) | . | O(n) | .
 Next Permutation | O(n) | . | . | .
 
+# Bitwise
+Op | Worst  | Average | Space (aux) | Notes
+-- | ------ | ------- | ----------- | -----
+Count Set Bits | O(bits) | . | O(1) | Kernighan's algorithm
+
 ## Graph
 Op | Worst  | Average | Space (aux) | Notes
 -- | ------ | ------- | ----------- | -----
