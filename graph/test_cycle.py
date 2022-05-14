@@ -3,7 +3,7 @@ import unittest
 from graph.cycle import isCyclicGraph
 
 
-class MyTestCase(unittest.TestCase):
+class CycleTestCase(unittest.TestCase):
     def setUp(self):
         self.cyclicGraph = [[1],
                   [2],

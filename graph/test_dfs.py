@@ -3,7 +3,7 @@ import unittest
 from graph.dfs import DFS
 
 
-class MyTestCase(unittest.TestCase):
+class DFSTestCase(unittest.TestCase):
     def setUp(self):
         self.directedGraph = [[1, 3],  # u = 0
                               [4],  # v = 1

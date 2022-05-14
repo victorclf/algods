@@ -3,7 +3,7 @@ import unittest
 from graph.components import findStronglyConnectedComponents, findConnectedComponents
 
 
-class MyTestCase(unittest.TestCase):
+class ComponentsTestCase(unittest.TestCase):
     def setUp(self):
         self.dag1 = [[1],  # a 0
                 [2,4,5],  # b 1

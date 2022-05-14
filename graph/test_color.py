@@ -3,7 +3,7 @@ import unittest
 from graph.color import isTwoColorable
 
 
-class MyTestCase(unittest.TestCase):
+class ColorTestCase(unittest.TestCase):
     def setUp(self):
         self.undirectedGraph = [[1, 4],  # r = 0
                            [0, 5],  # s = 1

@@ -4,7 +4,7 @@ from collections import deque
 from graph.sort import topologicalSort
 
 
-class MyTestCase(unittest.TestCase):
+class SortTestCase(unittest.TestCase):
     def testTopologicalSort(self):
         dag1 = [[1, 2],  #A 0
                 [2, 3],  #B 1

@@ -15,7 +15,7 @@ def isUndirectedGraph(graph):
     return True
 
 
-class MyTestCase(unittest.TestCase):
+class BFSTestCase(unittest.TestCase):
     def setUp(self):
         self.undirectedGraph = [[1, 4],  # r = 0
                            [0, 5],  # s = 1
