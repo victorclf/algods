@@ -55,7 +55,7 @@ if __name__ == '__main__':
     for k in range(n):
         random.shuffle(l)
         index = quickselect(l, k)
-        print(l)
-        print(f'k: {k}')
-        print(f'l[{index}]: {l[index]}')
+        # print(l)
+        # print(f'k: {k}')
+        # print(f'l[{index}]: {l[index]}')
         assert l[index] == k
