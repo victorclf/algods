@@ -6,6 +6,7 @@ Op | Worst  | Average | Space (aux) | Notes
 Count Inversions | O(n logn) | . | O(n) | .
 Longest Common Subsequence | O(m * n) | . | O(m * n) | if just the size of the subseq, then space is O(min(m, n))
 Longest Increasing Subsequence | O(n logn) | . | O(n) | .
+Monotonic Stack | O(n) | . | O(n) | e.g. find next greater for each element, find previous smaller for each, ...
 Next Permutation | O(n) | . | . | .
 
 # Bitwise
