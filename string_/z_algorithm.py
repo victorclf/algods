@@ -50,3 +50,20 @@ def countMatches(text, pattern, uniqueCharacter='^'):
     z = buildZArray(f'{pattern}{uniqueCharacter}{text}')
     return z.count(len(pattern))
 
+
+def countDistinctSubstrings(s):
+    """ Counts the number of possible distinct substrings from s. Empty substring is not counted. Uses the Z-algorithm.
+    
+    Time: O(n^2)
+
+    :param str s: the string
+    :return int: number of distinct substrings that can be formed from s
+    """
+    n = len(s)
+    r = ""
+    count = 0
+    for i in range(n):
+        r = s[i] + r
+        z = buildZArray(r)
+        count += len(r) - max(z)
+    return count

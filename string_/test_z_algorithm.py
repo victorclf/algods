@@ -30,6 +30,14 @@ class ZAlgorithmTestCase(unittest.TestCase):
         self.assertEqual(countMatches("peter piper picked a peck of pickled peppers", "pe"), 5)
         self.assertEqual(countMatches("apppa", "a"), 2)
         
+    def testCountDistinctSubstrings(self):
+        self.assertEqual(countDistinctSubstrings(""), 0)
+        self.assertEqual(countDistinctSubstrings("a"), 1)
+        self.assertEqual(countDistinctSubstrings("aa"), 2)
+        self.assertEqual(countDistinctSubstrings("aaaa"), 4)
+        self.assertEqual(countDistinctSubstrings("abaaa"), 11)
+        self.assertEqual(countDistinctSubstrings("abc"), 6)
+        self.assertEqual(countDistinctSubstrings("abca"), 9)
 
 
 if __name__ == '__main__':

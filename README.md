@@ -74,6 +74,7 @@ Bucket Sort | O(n^2) | O(n) | O(n) | good for values following uniform distribut
 Op | Worst  | Average | Space (aux) | Notes
 -- | ------ | ------- | ----------- | -----
 Build Z Array | O(n) | . | O(n) | for a string S, find the longest prefix-substring at each index of S
+Count Distinct Substrings | O(n^2) | . | O(n) | .
 Find All Matches | O(n + m) | . | O(n + m) | n = len(text) and m = len(pattern)
 
 
